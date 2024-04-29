@@ -55,7 +55,7 @@ export async function updateWatchlistToWatched(data) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        'mal_id': data.data
+        'mal_id': data
       })
     });
 
@@ -67,6 +67,29 @@ export async function updateWatchlistToWatched(data) {
   } catch (error) {
     console.error("Frontend error updating data: ", error);
     alert("Failed to add to watched list")
+  }
+}
+
+export async function deleteWatchedAnime(data) {
+  try {
+    const response = await fetch('http://localhost:3301/list/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'mal_id': data
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete this anime');
+    }
+
+    alert('Success');
+  } catch (error) {
+    console.error("Frontend error deleting data: ", error);
+    alert("Failed to delete to watched list")
   }
 }
 

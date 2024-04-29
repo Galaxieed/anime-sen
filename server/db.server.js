@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'Saitama111001!',
   database: 'anime_sen'
 });
 
@@ -61,6 +61,20 @@ app.post('/list/update', (req, res) => {
     }
 
     res.json({ success: true });
+  })
+})
+
+app.delete('/list/delete', (req, res) => {
+  const { mal_id } = req.body;
+  console.log(typeof mal_id);
+  const q = 'DELETE FROM anime_list WHERE mal_id = ?';
+  db.query(q, [mal_id], (err) => {
+    if (err) {
+      console.error('Query error deleting data: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    res.json({ success: true })
   })
 })
 
