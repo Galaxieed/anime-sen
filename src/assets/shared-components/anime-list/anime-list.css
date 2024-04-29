@@ -1,0 +1,47 @@
+.list-item {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  border-radius: 10px;
+  aspect-ratio: 27/40;
+  position: relative;
+  box-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.list-item:hover {
+  filter: contrast(150%);
+}
+
+.list-item p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0px;
+  
+  background-color: rgba(0, 0, 0, .5);
+
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.circle-check {
+  border-radius: 50%;
+  height: 20px;
+  padding: 10px;
+  aspect-ratio: 1;
+  background-color: green;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.circle-check * {
+  height: inherit;
+  width: inherit;
+}
