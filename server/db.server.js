@@ -1,17 +1,21 @@
 import express from "express";
 import mysql from 'mysql2';
 import cors from 'cors';
+import { config } from 'dotenv';
+import process from 'process';
 
 const app = express();
 const port = 3301;
 
 app.use(cors());
 
+config();
+
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Saitama111001!',
-  database: 'anime_sen'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 // Connect to MySQL
@@ -66,7 +70,6 @@ app.post('/list/update', (req, res) => {
 
 app.delete('/list/delete', (req, res) => {
   const { mal_id } = req.body;
-  console.log(typeof mal_id);
   const q = 'DELETE FROM anime_list WHERE mal_id = ?';
   db.query(q, [mal_id], (err) => {
     if (err) {
